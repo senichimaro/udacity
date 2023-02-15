@@ -1,0 +1,12 @@
+#Provide the apache version and configuration lines to be changed 
+
+
+# Apache Version
+Server version: Apache/2.4.7 (Ubuntu)
+Server built:   Apr  3 2019 18:04:59
+
+
+# Configuration file change(Hint: the change has to be made in /etc/apache2/conf-enabled/security.conf)
+
+ServerSignature Off
+ServerTokens Prod

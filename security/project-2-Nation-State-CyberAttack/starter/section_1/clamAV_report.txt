@@ -1,0 +1,6 @@
+#report all the detected filenames and the malware names identified by ClamAV.
+
+Filename		    Detection name 
+Downloads/ft32:     Unix.Malware.Agent-6774375-0
+Downloads/ft64:     Unix.Malware.Agent-6774336-0
+Downloads/wipefs:   Unix.Tool.Miner-6443173-0

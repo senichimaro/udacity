@@ -1,0 +1,19 @@
+ * Starting PostgreSQL 9.5 database server
+   ...done.
+ALTER ROLE
+NOTICE:  table "users" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "userlist" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "messages" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "friendlist" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "customers" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "users2" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "weakhash" does not exist, skipping
+CREATE TABLE
+NOTICE:  table "hashes" does not exist, skipping
+CREATE TABLE

@@ -1,0 +1,48 @@
+# Nmap 7.60 scan initiated Sat Oct  1 17:30:26 2022 as: nmap -sV --script=vulscan/vulscan.nse -oN /tmp/vulscan-report.txt 10.0.2.5
+Pre-scan script results:
+| broadcast-avahi-dos: 
+|   Discovered hosts:
+|     224.0.0.251
+|   After NULL UDP avahi packet DoS (CVE-2011-1002).
+|_  Hosts are all up (not vulnerable).
+Nmap scan report for 10.0.2.5 (10.0.2.5)
+Host is up (0.00064s latency).
+Not shown: 990 closed ports
+PORT     STATE SERVICE       VERSION
+7/tcp    open  echo
+9/tcp    open  discard?
+13/tcp   open  daytime       Microsoft Windows USA daytime
+17/tcp   open  qotd          Windows qotd (English)
+19/tcp   open  chargen
+80/tcp   open  http          Microsoft IIS httpd 10.0
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-server-header: Microsoft-IIS/10.0
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| [CVE-2010-3964] Unrestricted file upload vulnerability in the Document Conversions Launcher Service in Microsoft Office SharePoint Server 2007 SP2, when the Document Conversions Load Balancer Service is enabled, allows remote attackers to execute arbitrary code via a crafted SOAP request to TCP port 8082, aka "Malformed Request Code Execution Vulnerability."
+| [CVE-2007-5277] Microsoft Internet Explorer 6 drops DNS pins based on failed connections to irrelevant TCP ports, which makes it easier for remote attackers to conduct DNS rebinding attacks, as demonstrated by a port 81 URL in an IMG SRC, when the DNS pin had been established for a session on port 80, a different issue than CVE-2006-4560.
+| [CVE-1999-0158] Cisco PIX firewall manager (PFM) on Windows NT allows attackers to connect to port 8080 on the PFM server and retrieve any file whose name and location is known.
+135/tcp  open  msrpc         Microsoft Windows RPC
+| [CVE-2006-3880] ** DISPUTED **  Microsoft Windows NT 4.0, Windows 2000, Windows XP, and Windows Small Business Server 2003 allow remote attackers to cause a denial of service (IP stack hang) via a continuous stream of packets on TCP port 135 that have incorrect TCP header checksums and random numbers in certain TCP header fields, as demonstrated by the Achilles Windows Attack Tool.  NOTE: the researcher reports that the Microsoft Security Response Center has stated "Our investigation which has included code review, review of the TCPDump, and attempts on reproing the issue on multiple fresh installs of various Windows Operating Systems have all resulted in non confirmation."
+| [CVE-2002-1561] The RPC component in Windows 2000, Windows NT 4.0, and Windows XP allows remote attackers to cause a denial of service (disabled RPC service) via a malformed packet to the RPC Endpoint Mapper at TCP port 135, which triggers a null pointer dereference.
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+| [CVE-2007-5580] Buffer overflow in a certain driver in Cisco Security Agent 4.5.1 before 4.5.1.672, 5.0 before 5.0.0.225, 5.1 before 5.1.0.106, and 5.2 before 5.2.0.238 on Windows allows remote attackers to execute arbitrary code via a crafted SMB packet in a TCP session on port (1) 139 or (2) 445.
+| [CVE-2004-1038] A design error in the IEEE1394 specification allows attackers with physical access to a device to read and write to sensitive memory using a modified FireWire/IEEE 1394 client, thus bypassing intended restrictions that would normally require greater degrees of physical access to exploit.  NOTE: this was reported in 2008 to affect Windows Vista, but some Linux-based operating systems have protection mechanisms against this attack.
+445/tcp  open  microsoft-ds  Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+| [CVE-2002-0597] LANMAN service on Microsoft Windows 2000 allows remote attackers to cause a denial of service (CPU/memory exhaustion) via a stream of malformed data to microsoft-ds port 445.
+| [CVE-2007-5580] Buffer overflow in a certain driver in Cisco Security Agent 4.5.1 before 4.5.1.672, 5.0 before 5.0.0.225, 5.1 before 5.1.0.106, and 5.2 before 5.2.0.238 on Windows allows remote attackers to execute arbitrary code via a crafted SMB packet in a TCP session on port (1) 139 or (2) 445.
+| [CVE-2002-0283] Windows XP with port 445 open allows remote attackers to cause a denial of service (CPU consumption) via a flood of TCP SYN packets containing possibly malformed data.
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+|_ssl-ccs-injection: No reply from server (TIMEOUT)
+|_sslv2-drown: 
+| [CVE-2001-0540] Memory leak in Terminal servers in Windows NT and Windows 2000 allows remote attackers to cause a denial of service (memory exhaustion) via a large number of malformed Remote Desktop Protocol (RDP) requests to port 3389.
+MAC Address: 08:00:27:F8:A2:F7 (Oracle VirtualBox virtual NIC)
+Service Info: Host: WIN10-USTUDENT; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+|_smb-vuln-ms10-054: false
+|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Oct 15 17:00:26 2022 -- 1 IP address (1 host up) scanned in 353.04 seconds

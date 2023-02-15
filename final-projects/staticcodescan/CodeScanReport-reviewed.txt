@@ -1,0 +1,81 @@
+Scan results:
+>> Issue: [B106:hardcoded_password_funcarg] Possible hardcoded password: 'mysecurepassword'
+   OWASP: A6:2017 - Security Misconfiguration
+   Severity: High
+   Location: SampleCode/init_db.py:14
+13	    def open(self):
+14	        self.conn = psycopg2.connect(user = "webappuser",
+15	                                    password = "mysecurepassword",
+16	                                    host = "localhost",
+17	                                    port = "5432",
+18	                                    database = "website")
+19	        self.cursor = self.conn.cursor()
+
+   Recommendation: https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration.html
+
+--------------------------------------------------
+>> Issue: [B320:blacklist] Using lxml.etree.fromstring to parse untrusted XML data is known to be vulnerable to XML attacks. Replace lxml.etree.fromstring with its defusedxml equivalent function.
+   Location: SampleCode/fix_customer_orders.py:11
+   OWASP: A4:2017 - External Entities
+   Severity: High
+10	def customerOrdersXML():
+11	    root = lxml.etree.fromstring(xmlString)
+12	    root = fromstring(xmlString)
+
+   Recommendation: https://owasp.org/www-project-top-ten/2017/A4_2017-XML_External_Entities_(XXE).html
+
+--------------------------------------------------
+>> Issue: [B303:blacklist] Use of insecure MD2, MD4, MD5, or SHA1 hash function.
+   OWASP: A3 - Sensitive Data Exposure
+   Severity: Medium
+   Location: SampleCode/create_customer.py:23
+22	        self.email = email
+23	        self.password = hashlib.md5(password.encode('utf-8')).hexdigest()
+24	        self.banner = safestring.mark_safe(banner)
+
+   Recommendation: Store passwords using strong adaptive and salted hashing functions with a work factor (delay factor), such as Argon2, scrypt, bcrypt or PBKDF2.
+
+--------------------------------------------------
+>> Issue: [B703:django_mark_safe] Potential XSS on mark_safe function
+   OWASP: A7:2017 - Cross Site Scripting
+   Severity: Medium
+   Location: SampleCode/create_customer.py:24
+23	        self.password = hashlib.md5(password.encode('utf-8')).hexdigest()
+24	        self.banner = safestring.mark_safe(banner)
+25	
+
+   Recommendation: https://owasp.org/www-project-top-ten/2017/A7_2017-Cross-Site_Scripting_(XSS).html
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   OWASP: A9:2017 - Using Components with Known Vulnerabilities
+   Severity: Low
+   Location: SampleCode/onLogin.py:8
+7	    def process(self, user, startupcmd):
+8	        p = subprocess.Popen([startupcmd], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+9	        r = p.communicate()[0]
+
+   Recommendation: https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html
+
+--------------------------------------------------
+            >> Issue: [B404:blacklist] Consider possible security implications associated with subprocess module.
+               OWASP: A9:2017 - Using Components with Known Vulnerabilities
+               Severity: Low
+               Location: SampleCode/onLogin.py:1
+            1	import os, sys, subprocess
+            2	
+            3	class userLogin():
+            4	    def __init__(self):
+
+   Recommendation: https://owasp.org/www-project-top-ten/2017/A9_2017-Using_Components_with_Known_Vulnerabilities.html
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   OWASP: FALSEPOSITIVE
+   Severity: FALSEPOSITIVE
+   Location: SampleCode/init_db.py:40
+39	        letters = string.ascii_lowercase
+40	        result_str = ''.join(random.choice(letters) for i in range(length))
+41	        return result_str
+
+--------------------------------------------------
